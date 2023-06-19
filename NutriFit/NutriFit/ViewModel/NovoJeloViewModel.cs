@@ -154,23 +154,9 @@ namespace NutriFit.ViewModel
             if (openFileDialog.ShowDialog() == true)
             {
                 Slika = openFileDialog.FileName;
-                FilePath = openFileDialog.FileName;
             }
         }
-        private string filePath;
 
-        public string FilePath
-        {
-            get { return filePath; }
-            set
-            {
-                if (filePath != value)
-                {
-                    filePath = value;
-                    OnPropertyChanged(nameof(FilePath));
-                }
-            }
-        }
 
         public NovoJeloViewModel()
         {

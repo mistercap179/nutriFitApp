@@ -7,7 +7,7 @@ namespace NutriFit.Database
     using System.Data.Entity.Spatial;
 
     [Table("Racuni")]
-    public partial class Racuni
+    public partial class Racuni : IDBModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Racuni()

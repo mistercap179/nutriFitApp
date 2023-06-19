@@ -25,8 +25,7 @@ namespace NutriFit.Database.CRUD
         {
             try
             {
-                Jela jelo = item as Jela;
-                jelo.id = Guid.NewGuid();
+                Jela jelo = item as Jela; 
                 DBModels.Instance.Jela.Add(jelo);
                 DBModels.Instance.SaveChanges();
                 return true;

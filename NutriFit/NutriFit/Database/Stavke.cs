@@ -7,7 +7,7 @@ namespace NutriFit.Database
     using System.Data.Entity.Spatial;
 
     [Table("Stavke")]
-    public partial class Stavke
+    public partial class Stavke : IDBModel
     {
         public Guid id { get; set; }
 
