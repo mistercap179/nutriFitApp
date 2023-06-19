@@ -154,14 +154,28 @@ namespace NutriFit.ViewModel
             if (openFileDialog.ShowDialog() == true)
             {
                 Slika = openFileDialog.FileName;
+                FilePath = openFileDialog.FileName;
             }
         }
+        private string filePath;
 
+        public string FilePath
+        {
+            get { return filePath; }
+            set
+            {
+                if (filePath != value)
+                {
+                    filePath = value;
+                    OnPropertyChanged(nameof(FilePath));
+                }
+            }
+        }
 
         public NovoJeloViewModel()
         {
             Tipovi = new ObservableCollection<string>() { "Jelo", "Dodatak", "Prilog"};
-            Vrste = new ObservableCollection<string>() { "Dorucak","Potaz","Kombinacija","Pasta","Rizoto","Falafel","ObrokSalata","Pecivo", "Slatko"};
+            Vrste = new ObservableCollection<string>() { "Doručak","Potaž","Kombinacija","Pasta","Rižoto","Falafel","ObrokSalata","Pecivo", "Slatko"};
             AddCommand = new RelayCommand(AddJelo);
             BrowseCommand = new RelayCommand(Browse);
         }
@@ -243,7 +257,7 @@ namespace NutriFit.ViewModel
             UgljeniHidrati = 0;
             Kalorije = 0;
             Masti = 0;
-            Vrsta = VrstaJela.Dorucak;
+            Vrsta = VrstaJela.Doručak;
             Tip = TipJela.Jelo;
 
             Window window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);

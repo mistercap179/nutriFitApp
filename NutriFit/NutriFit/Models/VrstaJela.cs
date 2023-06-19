@@ -8,11 +8,11 @@ namespace NutriFit.Models
 {
     public enum VrstaJela
     {
-        Dorucak,
-        Potaz,
+        Doručak,
+        Potaž,
         Kombinacija,
         Pasta,
-        Rizoto,
+        Rižoto,
         Falafel,
         ObrokSalata,
         Pecivo,

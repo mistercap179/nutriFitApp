@@ -22,6 +22,7 @@ namespace NutriFit.Views
         public NovoJeloView()
         {
             InitializeComponent();
+           
         }
     }
 }

@@ -45,7 +45,7 @@ namespace NutriFit.ViewModel
         public JelaViewModel()
         {
             //this.service.getStudenti().ForEach(item => Jela.Add(item));
-            Jela = new ObservableCollection<Models.Jelo> { new Models.Jelo { Kalorije = 123123, Cijena = 123123 ,Slika = "C://Users//marko//OneDrive//Desktop//NutriFit//NutriFit//NutriFit//Images//addbutton.png" } };
+            Jela = new ObservableCollection<Models.Jelo> { new Models.Jelo { Kalorije = 123123, Cijena = 123123 ,Slika = "" } };
             OpenNovoJeloWindowCommand = new RelayCommand(DodajJelo);
            // DodajKorpaCommand = new RelayCommand<object>(DodajUkorpu()); 
 
