@@ -25,7 +25,7 @@ namespace NutriFit.Database.CRUD
         {
             try
             {
-                Jela jelo = item as Jela;
+                Jela jelo = item as Jela; 
                 DBModels.Instance.Jela.Add(jelo);
                 DBModels.Instance.SaveChanges();
                 return true;
@@ -74,7 +74,7 @@ namespace NutriFit.Database.CRUD
             }
         }
 
-        ICollection<Jelo> ICRUD<Jelo>.GetAll()
+        public ICollection<Jelo> GetAll()
         {
             ICollection<Jelo> jela = new List<Jelo>();
             DBModels.Instance.Jela.ToList().ForEach(jelo => jela.Add(conversion.ConvertJelo(jelo)));

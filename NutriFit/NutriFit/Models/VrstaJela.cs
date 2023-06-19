@@ -14,7 +14,7 @@ namespace NutriFit.Models
         Pasta,
         Rizoto,
         Falafel,
-        ObrokSalata,
+        Salata,
         Pecivo,
         Slatko
     }

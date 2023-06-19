@@ -161,7 +161,7 @@ namespace NutriFit.ViewModel
         public NovoJeloViewModel()
         {
             Tipovi = new ObservableCollection<string>() { "Jelo", "Dodatak", "Prilog"};
-            Vrste = new ObservableCollection<string>() { "Dorucak","Potaz","Kombinacija","Pasta","Rizoto","Falafel","ObrokSalata","Pecivo", "Slatko"};
+            Vrste = new ObservableCollection<string>() { "Dorucak","Potaz","Kombinacija","Pasta","Rizoto","Falafel","Salata","Pecivo", "Slatko"};
             AddCommand = new RelayCommand(AddJelo);
             BrowseCommand = new RelayCommand(Browse);
         }
