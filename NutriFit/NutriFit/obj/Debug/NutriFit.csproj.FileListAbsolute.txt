@@ -1,0 +1,10 @@
+C:\Users\marko\OneDrive\Desktop\NutriFit\NutriFit\NutriFit\obj\Debug\NutriFit.csproj.AssemblyReference.cache
+C:\Users\marko\OneDrive\Desktop\NutriFit\NutriFit\NutriFit\obj\Debug\MainWindow.g.cs
+C:\Users\marko\OneDrive\Desktop\NutriFit\NutriFit\NutriFit\obj\Debug\Views\JelaView.g.cs
+C:\Users\marko\OneDrive\Desktop\NutriFit\NutriFit\NutriFit\obj\Debug\Views\MainView.g.cs
+C:\Users\marko\OneDrive\Desktop\NutriFit\NutriFit\NutriFit\obj\Debug\Views\NovoJeloView.g.cs
+C:\Users\marko\OneDrive\Desktop\NutriFit\NutriFit\NutriFit\obj\Debug\Views\PorudzbineView.g.cs
+C:\Users\marko\OneDrive\Desktop\NutriFit\NutriFit\NutriFit\obj\Debug\App.g.cs
+C:\Users\marko\OneDrive\Desktop\NutriFit\NutriFit\NutriFit\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\marko\OneDrive\Desktop\NutriFit\NutriFit\NutriFit\obj\Debug\NutriFit_MarkupCompile.cache
+C:\Users\marko\OneDrive\Desktop\NutriFit\NutriFit\NutriFit\obj\Debug\NutriFit_MarkupCompile.lref
