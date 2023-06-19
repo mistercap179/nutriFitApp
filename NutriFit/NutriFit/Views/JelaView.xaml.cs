@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace NutriFit.Views
@@ -17,7 +18,7 @@ namespace NutriFit.Views
     /// <summary>
     /// Interaction logic for JelaView.xaml
     /// </summary>
-    public partial class JelaView : Window
+    public partial class JelaView : UserControl
     {
         public JelaView()
         {

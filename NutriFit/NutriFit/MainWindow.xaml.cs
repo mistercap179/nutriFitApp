@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using NutriFit.ViewModel;
 
 namespace NutriFit
 {
@@ -22,6 +23,8 @@ namespace NutriFit
     {
         public MainWindow()
         {
+            var MainViewModel = new MainViewModel();
+            DataContext = MainViewModel;
             InitializeComponent();
         }
     }

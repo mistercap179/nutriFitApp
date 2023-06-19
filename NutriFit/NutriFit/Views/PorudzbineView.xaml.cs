@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace NutriFit.Views
@@ -17,7 +18,7 @@ namespace NutriFit.Views
     /// <summary>
     /// Interaction logic for PorudzbineView.xaml
     /// </summary>
-    public partial class PorudzbineView : Window
+    public partial class PorudzbineView : UserControl
     {
         public PorudzbineView()
         {

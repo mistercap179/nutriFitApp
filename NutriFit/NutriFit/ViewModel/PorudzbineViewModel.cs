@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace NutriFit.ViewModel
 {
-    class PorudzbineViewModel
+    public class PorudzbineViewModel
     {
+        public PorudzbineViewModel()
+        {
+
+        }
     }
 }

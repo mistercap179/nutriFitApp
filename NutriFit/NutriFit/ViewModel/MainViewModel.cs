@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GalaSoft.MvvmLight;
 
 namespace NutriFit.ViewModel
 {
-    public class MainViewModel
+    public class MainViewModel 
     {
-        public MainViewModel() { }
+        public JelaViewModel JelaViewModel { get; }
+        public PorudzbineViewModel PorudzbineViewModel { get; }
+
+        public MainViewModel()
+        {
+
+            JelaViewModel = new JelaViewModel();
+            PorudzbineViewModel = new PorudzbineViewModel();
+        }
     }
 }

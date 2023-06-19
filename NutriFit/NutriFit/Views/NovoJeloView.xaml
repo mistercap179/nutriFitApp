@@ -5,8 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NutriFit.Views"
         mc:Ignorable="d"
-        Title="NovoJeloView" Height="450" Width="800">
-    <Grid>
-       
+        Title="NovoJeloView" Height="480" Width="800">
+    <Grid Margin="0,0,0,14">
+        <Label Content="Naziv" HorizontalAlignment="Left" Height="35" Margin="30,44,0,0" VerticalAlignment="Top" Width="109" RenderTransformOrigin="0.228,0.342"/>
+        <TextBox Text="{Binding Naziv, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="96,47,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="114" RenderTransformOrigin="0.57,0.731"/>
+        <Label Content="Slika" HorizontalAlignment="Left" Height="32" Margin="27,98,0,0" VerticalAlignment="Top" Width="50"/>
+        <Button Content="Browse" Command="{Binding BrowseCommand}" Margin="218,96,506,314" />
+        <TextBox  Text="{Binding Slika, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="94,96,596,314" RenderTransformOrigin="-2.746,2.488" />
+        <Label Content="Sifra kasa" HorizontalAlignment="Left" Height="32" Margin="25,154,0,0" VerticalAlignment="Top" Width="66"/>
+        <TextBox Text="{Binding SifraKasa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="97,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106"/>
+        <TextBox HorizontalAlignment="Left" Height="76" Margin="89,220,0,0" TextWrapping="Wrap" Text="{Binding Sastojci, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="156"/>
+        <Label Content="Sastojci" HorizontalAlignment="Left" Height="30" Margin="27,214,0,0" VerticalAlignment="Top" Width="80"/>
+        <Label Content="Cijena" HorizontalAlignment="Left" Height="34" Margin="15,322,0,0" VerticalAlignment="Top" Width="58"/>
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="87,328,0,0" TextWrapping="Wrap" Text="{Binding Cijena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="90"/>
+        <Label Content="Proteini" HorizontalAlignment="Left" Height="32" Margin="399,44,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox HorizontalAlignment="Left" Height="34" Margin="539,44,0,0" TextWrapping="Wrap" Text="{Binding Proteini, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="128"/>
+        <Label Content="Ugljeni hidrati" HorizontalAlignment="Left" Height="36" Margin="401,114,0,0" VerticalAlignment="Top" Width="108"/>
+        <TextBox HorizontalAlignment="Left" Height="32" Margin="539,110,0,0" TextWrapping="Wrap" Text="{Binding UgljeniHidrati, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="122"/>
+        <Label Content="Kalorije" HorizontalAlignment="Left" Height="24" Margin="403,188,0,0" VerticalAlignment="Top" Width="90"/>
+        <TextBox HorizontalAlignment="Left" Height="32" Margin="543,186,0,0" TextWrapping="Wrap" Text="{Binding Kalorije, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="106"/>
+        <Label Content="Masti" HorizontalAlignment="Left" Height="34" Margin="405,260,0,0" VerticalAlignment="Top" Width="90"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="539,256,0,0" TextWrapping="Wrap" Text="{Binding Masti, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="104"/>
+        <Label Content="Vrsta" HorizontalAlignment="Left" Height="34" Margin="407,320,0,0" VerticalAlignment="Top" Width="86"/>
+        <Label Content="Tip" HorizontalAlignment="Left" Height="28" Margin="409,368,0,0" VerticalAlignment="Top" Width="62"/>
+        <ListBox ItemsSource="{Binding Vrste}"  SelectedItem="{Binding Vrsta, Mode=TwoWay}"   HorizontalAlignment="Left" Height="32" Margin="541,316,0,0" VerticalAlignment="Top" Width="110"/>
+        <ListBox ItemsSource="{Binding Tipovi}"  SelectedItem="{Binding Tip, Mode=TwoWay}"   HorizontalAlignment="Left" Height="38" Margin="541,372,0,0" VerticalAlignment="Top" Width="122"/>
+        <Button Content="Dodaj"  Command="{Binding AddCommand}" HorizontalAlignment="Left" Height="46" Margin="223,392,0,-1" VerticalAlignment="Top" Width="138"/>
+
     </Grid>
 </Window>
