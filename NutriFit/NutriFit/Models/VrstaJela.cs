@@ -16,6 +16,7 @@ namespace NutriFit.Models
         Falafel,
         Salata,
         Pecivo,
-        Slatko
+        Slatko,
+        Sok
     }
 }

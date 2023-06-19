@@ -10,6 +10,7 @@ namespace NutriFit.Models
     {
         Jelo,
         Dodatak,
-        Prilog
+        Prilog,
+        Sok
     }
 }

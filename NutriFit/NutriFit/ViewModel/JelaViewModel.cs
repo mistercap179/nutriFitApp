@@ -20,8 +20,7 @@ namespace NutriFit.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<Models.Jelo> Jela { get; set; }
         public Dictionary<Guid,Stavka> Stavke { get; set; }
-
-        public ObservableCollection<string> ListBoxVrste = new ObservableCollection<string>();
+        public ObservableCollection<string> ComboBoxVrste { get; set; }
 
         public ObservableCollection<Stavka> StavkeCollection { get; set; }
 
@@ -33,28 +32,59 @@ namespace NutriFit.ViewModel
             {
                 selectedItem = value;
                 OnPropertyChanged(nameof(SelectedItem));
+                CancelSearch();
+                Search();
             }
         }
 
         public ICommand OpenNovoJeloWindowCommand { get; set; }
+        public ICommand OpenNoviSokWindowCommand { get; set; }
         public ICommand DodajKorpaCommand { get; set; }
         public ICommand SearchCommand { get; set; }
         public ICommand CancelCommand { get; set; }
         public ICommand PovecajBrojStavkiCommand { get; set; }
         public ICommand AddPorudzbinaCommand { get; set; }
         public ICommand ObrisiStavkuCommand { get; set; }
+        public void Search()
+        {
+            if (SelectedItem != null)
+            {
+                ObservableCollection<Models.Jelo> filteredJela = new ObservableCollection<Models.Jelo>(
+                    Jela.Where(item => item.Vrsta.ToString() == SelectedItem)
+                );
+
+                Jela.Clear();
+                filteredJela.ToList().ForEach(item => Jela.Add(item));
+
+            }
+
+        }
 
 
+
+        public void CancelSearch()
+        {
+            Jela.Clear();
+            try
+            {
+                JeloCRUD.Instance.GetAll().ToList().ForEach(item => Jela.Add(item));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
         public JelaViewModel()
         {
             Jela = new ObservableCollection<Jelo>();
             Stavke = new Dictionary<Guid, Stavka>();
             StavkeCollection = new ObservableCollection<Stavka>();
             
-            ListBoxVrste  = new ObservableCollection<string>() { "Dorucak", "Potaz", "Kombinacija", "Pasta", "Rizoto", "Falafel", "Salata", "Pecivo", "Slatko" };
+            ComboBoxVrste = new ObservableCollection<string>() { "Doručak", "Potaž", "Kombinacija", "Pasta", "Rižoto", "Falafel", "Salata", "Pecivo", "Slatko","Sok"};
             JeloCRUD.Instance.GetAll().ToList().ForEach(item => Jela.Add(item));
 
             OpenNovoJeloWindowCommand = new RelayCommand(DodajJelo);
+            OpenNoviSokWindowCommand = new RelayCommand(DodajSok);
             DodajKorpaCommand = new RelayCommand<object>(DodajUkorpu);
             ObrisiStavkuCommand = new RelayCommand<object>(ObrisiIzKorpe);
             PovecajBrojStavkiCommand = new RelayCommand<object>(UvecajBrojStavke);
@@ -62,11 +92,20 @@ namespace NutriFit.ViewModel
             CancelCommand = new RelayCommand(CancelSearch);
 
         }
-        public void CancelSearch() { }
+      
         public void DodajJelo()
         {
             var novoJeloViewModel = new NovoJeloViewModel();
             var secondWindow = new NovoJeloView() { DataContext = novoJeloViewModel };
+            secondWindow.Closed += SecondWindowClosed;
+            secondWindow.Show();
+
+        } 
+
+        public void DodajSok()
+        {
+            var novoJeloViewModel = new NovoJeloViewModel(VrstaJela.Sok);
+            var secondWindow = new NovoJeloView(VrstaJela.Sok) { DataContext = novoJeloViewModel };
             secondWindow.Closed += SecondWindowClosed;
             secondWindow.Show();
 
@@ -156,11 +195,13 @@ namespace NutriFit.ViewModel
                 Stavke = stavke,
                 ukupnaCijena = ukupnaCijena
             };
-            RacunCRUD.Instance.Create(racun);
+            RacunCRUD.Instance.Create(racun); 
+            DataChanged?.Invoke(this, EventArgs.Empty);
             Stavke.Clear();
             StavkeCollection.Clear();
         }
 
+        public event EventHandler DataChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -178,57 +219,6 @@ namespace NutriFit.ViewModel
                 Console.WriteLine(ex.Message);
             }
         }
-
-        public void Search()
-        {
-            if (SelectedItem == null )
-            {
-                MessageBox.Show("Izaberite tip pretrage");
-            }
-            else if (SelectedItem != null)
-            {
-                ObservableCollection<Models.Jelo> filteredJela = new ObservableCollection<Models.Jelo>();
-
-                switch (SelectedItem)
-                {
-                    case "Dorucak":
-                        Jela.Where(item => item.Tip.ToString() == SelectedItem);
-                        break;
-                    case "Potaz":
-                        
-                        break;
-                    case "Kombinacija":
-                        
-                        break;
-                    case "Pasta":
-                       
-                        break;
-                    case "Rizoto":
-
-                        break;
-                    case "Falafel":
-
-                        break;
-                    case "Salata":
-
-                        break;
-                    case "Pecivo":
-
-                        break;
-                    case "Slatko":
-
-                        break;
-                }
-
-                filteredJela = new ObservableCollection<Models.Jelo>();
-                Jela.Clear();
-                filteredJela.ToList().ForEach(item => Jela.Add(item));
-
-            }
-
-        }
-
-
 
     }
 }

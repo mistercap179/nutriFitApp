@@ -2,6 +2,7 @@
 using NutriFit.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,11 +30,24 @@ namespace NutriFit.Database.CRUD
                 DBModels.Instance.Jela.Add(jelo);
                 DBModels.Instance.SaveChanges();
                 return true;
-            } 
-            catch 
+            }
+            catch (DbEntityValidationException ex)
             {
+                // Iterate through each validation error
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        // Get the error message and property name
+                        string errorMessage = validationError.ErrorMessage;
+                        string propertyName = validationError.PropertyName;
+
+                        // Handle or log the validation error as needed
+                        Console.WriteLine($"Validation error: Property '{propertyName}', Error: '{errorMessage}'");
+                    }
+                }
                 return false;
-            } 
+            }
         }
 
         public bool Delete(IModel item)
@@ -76,9 +90,17 @@ namespace NutriFit.Database.CRUD
 
         public ICollection<Jelo> GetAll()
         {
-            ICollection<Jelo> jela = new List<Jelo>();
-            DBModels.Instance.Jela.ToList().ForEach(jelo => jela.Add(conversion.ConvertJelo(jelo)));
-            return jela;
+            try
+            {
+                ICollection<Jelo> jela = new List<Jelo>();
+                DBModels.Instance.Jela.ToList().ForEach(jelo => jela.Add(conversion.ConvertJelo(jelo)));
+                return jela;
+            }
+            catch(Exception ex) 
+            {
+                Console.WriteLine(ex.InnerException.Message);
+                return null;
+            }
         }
     }
 }

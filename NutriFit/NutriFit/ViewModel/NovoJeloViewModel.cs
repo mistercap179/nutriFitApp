@@ -165,13 +165,20 @@ namespace NutriFit.ViewModel
             AddCommand = new RelayCommand(AddJelo);
             BrowseCommand = new RelayCommand(Browse);
         }
+        public NovoJeloViewModel(VrstaJela sok)
+        {
+            Tipovi = new ObservableCollection<string>();
+            Vrste = new ObservableCollection<string>();
+            AddCommand = new RelayCommand(AddSok);
+            BrowseCommand = new RelayCommand(Browse);
+        }
 
 
         public void AddJelo()
         {
             var jelo = new Jela
             {
-                id = new Guid(),
+                id = Guid.NewGuid(),
                 naziv = Naziv,
                 putanjaSlike = Slika,
                 sifraKasa = SifraKasa,
@@ -194,6 +201,33 @@ namespace NutriFit.ViewModel
                 insertJelo(jelo);
             }
         }
+        public void AddSok()
+        {
+            var sok = new Jela
+            {
+                id = Guid.NewGuid(),
+                naziv = Naziv,
+                putanjaSlike = Slika,
+                sifraKasa = SifraKasa,
+                sastojci =  "prazno",
+                cijena = Cijena,
+                proteini = 0.0,
+                ugljeniHidrati = 0.0,
+                kalorije = 0.0,
+                masti = 0.0,
+                vrstaJela = VrstaJela.Sok.ToString(),
+                tipJela = TipJela.Sok.ToString(),
+            };
+
+            if (!IsSokFormValid())
+            {
+                MessageBox.Show("Niste popunili sva polja forme!");
+            }
+            else
+            {
+                insertJelo(sok);
+            }
+        }
 
 
         protected virtual void OnPropertyChanged(string propertyName)
@@ -212,6 +246,29 @@ namespace NutriFit.ViewModel
             }
 
             if (Cijena <= 0 || Proteini <= 0 || UgljeniHidrati <= 0 || Kalorije <= 0 || Masti <= 0)
+            {
+                isValid = false;
+            }
+
+            if (SifraKasa <= 0)
+            {
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+         public bool IsSokFormValid()
+        {
+            bool isValid = true;
+
+            if (string.IsNullOrWhiteSpace(Naziv) || string.IsNullOrWhiteSpace(Slika)
+                )
+            {
+                isValid = false;
+            }
+
+            if (Cijena <= 0)
             {
                 isValid = false;
             }

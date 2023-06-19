@@ -11,7 +11,7 @@ namespace NutriFit.ViewModel
         {
 
             JelaViewModel = new JelaViewModel();
-            PorudzbineViewModel = new PorudzbineViewModel();
+            PorudzbineViewModel = new PorudzbineViewModel(JelaViewModel);
         }
     }
 }

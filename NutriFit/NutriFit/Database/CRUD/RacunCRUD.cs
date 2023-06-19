@@ -28,6 +28,12 @@ namespace NutriFit.Database.CRUD
                 //potencijalno promeniti na dodavanje pojedinacnih
                 //stavki pa onda tek racun
                 Racuni racuni = item as Racuni;
+                for (int i = 0; i < racuni.Stavke.ToList().Count; i++)
+                {
+                    racuni.Stavke.ToList()[i].idRacuna = racuni.id;
+                    racuni.Stavke.ToList()[i].id = Guid.NewGuid();
+                    DBModels.Instance.Stavke.Add(racuni.Stavke.ToList()[i]);
+                }
                 DBModels.Instance.Racuni.Add(racuni);
                 DBModels.Instance.SaveChanges();
                 return true;

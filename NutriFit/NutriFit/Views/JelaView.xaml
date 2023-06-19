@@ -8,10 +8,8 @@
 
     <Grid>
         <Grid>
-            <ComboBox ItemsSource="{Binding ListBoxVrste}"  SelectedItem="{Binding SelectedItem, Mode=TwoWay}"  HorizontalAlignment="Left" Height="46" Margin="26,67,0,0" VerticalAlignment="Top" Width="130" RenderTransformOrigin="1,0.731" />
-            <Button Content="Search"  Command="{Binding SearchCommand}" HorizontalAlignment="Left" Height="34" Margin="216,70,0,0" VerticalAlignment="Top" Width="68"/>
-            <Button Content="Cancel"  Command="{Binding CancelCommand}" HorizontalAlignment="Left" Height="34" Margin="324,68,0,0" VerticalAlignment="Top" Width="68"/>
-
+            <ComboBox ItemsSource="{Binding ComboBoxVrste}" SelectedItem="{Binding SelectedItem}"  HorizontalAlignment="Left" Height="33" Margin="26,80,0,0" VerticalAlignment="Top" Width="184" RenderTransformOrigin="1,0.731" />
+            <Button Content="Cancel"  Command="{Binding CancelCommand}" HorizontalAlignment="Left" Height="34" Margin="268,80,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="-0.471,0.824"/>
             <ScrollViewer Margin="0,144,312,104">
                 <ItemsControl ItemsSource="{Binding Jela}" Height="492" Width="435" >
                     <ItemsControl.ItemsPanel>
@@ -29,16 +27,17 @@
                                         <RowDefinition/>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
-                                    <TextBlock Text="{Binding Cijena}" FontWeight="Bold" Grid.Row="0"/>
+                                    <TextBlock Text="{Binding Naziv}" FontWeight="Bold" Grid.Row="0"/>
 
-                                    <Image Width="16" Height="16" Grid.Row="1">
+                                    <Image Width="100" Height="40" Grid.Row="1">
                                         <Image.Source>
                                             <BitmapImage UriSource="{Binding Slika}" />
                                         </Image.Source>
                                     </Image>
-                                    <TextBlock Text="{Binding Kalorije}" TextWrapping="Wrap" Grid.Row="1"/>
+                                    <TextBlock Text="{Binding Cijena, StringFormat='Cijena: {0} KM'}" TextWrapping="Wrap" Grid.Row="2"/>
+
                                     <Button Content="Dodaj u korpu" Command="{Binding DataContext.DodajKorpaCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                            CommandParameter="{Binding}" Grid.Row="1">
+                                            CommandParameter="{Binding}" Grid.Row="3">
                                     </Button>
 
                                 </Grid>
@@ -77,15 +76,18 @@
                                         <RowDefinition/>
                                         <RowDefinition/>
                                         <RowDefinition/>
+                                        <RowDefinition/>
                                     </Grid.RowDefinitions>
                                     <TextBlock Text="{Binding Naziv}" FontWeight="Bold" Grid.Row="0"/>
-                                    <TextBlock Text="{Binding Kolicina}" TextWrapping="Wrap" Grid.Row="1"/>
-                                    <TextBlock Text="{Binding UkupnaCijena}" TextWrapping="Wrap" Grid.Row="2"/>
+
+                                    <TextBlock Text="{Binding Kolicina, StringFormat='Količina x{0}'}" TextWrapping="Wrap" Grid.Row="1" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding SifraKasa,StringFormat='Šifra za kasu: {0}'}"  TextWrapping="Wrap" Grid.Row="2" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding UkupnaCijena, StringFormat='Ukupna cijena: {0} KM'}" TextWrapping="Wrap" Grid.Row="3"/>
                                     <Button Content="-" Command="{Binding DataContext.ObrisiStavkuCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                            CommandParameter="{Binding}" Grid.Row="3">
+                                            CommandParameter="{Binding}" Grid.Row="4">
                                     </Button>
                                     <Button Content="+" Command="{Binding DataContext.PovecajBrojStavkiCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                            CommandParameter="{Binding}" Grid.Row="4">
+                                            CommandParameter="{Binding}" Grid.Row="5">
                                     </Button>
                                 </Grid>
                             </Border>
@@ -97,6 +99,7 @@
             <Button Content="Naplati" Command="{Binding AddPorudzbinaCommand}" HorizontalAlignment="Left" Height="64" Margin="520,490,0,0" VerticalAlignment="Top" Width="200"/>
           
         </Grid>
-          <Button Content="Dodaj Jelo"  Command="{Binding OpenNovoJeloWindowCommand}" Margin="276,542,304,24"></Button>
+          <Button Content="Dodaj Sok"  Command="{Binding OpenNoviSokWindowCommand}" Margin="276,542,304,24"></Button>
+          <Button Content="Dodaj Jelo"  Command="{Binding OpenNovoJeloWindowCommand}" Margin="53,542,527,24"></Button>
     </Grid>
 </UserControl>

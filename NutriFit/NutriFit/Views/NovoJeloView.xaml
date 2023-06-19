@@ -76,31 +76,32 @@
 
         <Label Content="Šifra kasa" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0" />
         <TextBox Text="{Binding SifraKasa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,4,0,5" />
+ 
+        <Label Content="Cijena" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0" />
+        <TextBox Text="{Binding Cijena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,10,0,5"  />
 
-        <Label Content="Sastojci" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0" />
-        <TextBox Text="{Binding Sastojci, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,1,0,0" Width="216" Height="60" TextWrapping="Wrap" />
+        <Label x:Name="SastojciLabel" Content="Sastojci" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0" />
+        <TextBox x:Name="SastojciTextBox" Text="{Binding Sastojci, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,1,0,0" Width="216" Height="60" TextWrapping="Wrap" />
 
-        <Label Content="Cijena" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0" />
-        <TextBox Text="{Binding Cijena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,10,0,5"  />
+        <Label x:Name="ProteiniLabel" Content="Proteini" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="29,0,0,44" Grid.RowSpan="2" />
+        <TextBox x:Name="ProteiniTextBox" Text="{Binding Proteini, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,10,0,50" Grid.RowSpan="2" />
 
-        <Label Content="Proteini" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="29,0,0,44" Grid.RowSpan="2" />
-        <TextBox Text="{Binding Proteini, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,10,0,50" Grid.RowSpan="2" />
+        <Label x:Name="UgljeniHidratiLabel" Content="Ugljeni &#xD;&#xA;hidrati" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="29,41,0,2" Width="60" Height="42" RenderTransformOrigin="0.3,0.452" />
+        <TextBox x:Name="UgljeniHidratiTextBox" Text="{Binding UgljeniHidrati, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,51,0,10" />
 
-        <Label Content="Ugljeni &#xD;&#xA;hidrati" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="29,41,0,2" Width="60" Height="42" RenderTransformOrigin="0.3,0.452" />
-        <TextBox Text="{Binding UgljeniHidrati, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,51,0,10" />
+        <Label x:Name="KalorijeLabel" Content="Kalorije" Grid.Row="7" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,1" />
+        <TextBox x:Name="KalorijeTextBox" Text="{Binding Kalorije, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,7,0,10"  />
 
-        <Label Content="Kalorije" Grid.Row="7" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,1" />
-        <TextBox Text="{Binding Kalorije, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,7,0,10"  />
+        <Label x:Name="MastiLabel" Content="Masti" Grid.Row="8" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,5" RenderTransformOrigin="0.59,0.038" />
+        <TextBox x:Name="MastiTextBox" Text="{Binding Masti, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,0,0,5" />
 
-        <Label Content="Masti" Grid.Row="8" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,5" RenderTransformOrigin="0.59,0.038" />
-        <TextBox Text="{Binding Masti, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,0,0,5" />
+        <Label x:Name="VrstaLabel" Content="Vrsta" Grid.Row="9" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,6,0,4" />
+        <ListBox x:Name="VrstaListBox" ItemsSource="{Binding Vrste}" SelectedItem="{Binding Vrsta, Mode=TwoWay}" Grid.Row="9" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,8,0,4" Height="28" Width="216" />
 
-        <Label Content="Vrsta" Grid.Row="9" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,6,0,4" />
-        <ListBox ItemsSource="{Binding Vrste}" SelectedItem="{Binding Vrsta, Mode=TwoWay}" Grid.Row="9" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,8,0,4" Height="28" Width="216" />
-
-        <Label Content="Tip" Grid.Row="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,2,0,1" />
-        <ListBox ItemsSource="{Binding Tipovi}" SelectedItem="{Binding Tip, Mode=TwoWay}" Grid.Row="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,4,0,1" Width="216" Height="28" />
-
+        <Label x:Name="TipLabel" Content="Tip" Grid.Row="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,2,0,1" />
+        <ListBox x:Name="TipListBox" ItemsSource="{Binding Tipovi}" SelectedItem="{Binding Tip, Mode=TwoWay}"
+ Grid.Row="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,4,0,1" Width="216" Height="28" />
+  
         <Button Content="Dodaj" Command="{Binding AddCommand}" Grid.Row="14" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="96,10,0,-40" Width="141" Height="42" />
 
     </Grid>

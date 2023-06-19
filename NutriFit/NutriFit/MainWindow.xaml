@@ -11,7 +11,7 @@
             <TabItem Header="Tab Jela">
                 <local:JelaView DataContext="{Binding JelaViewModel}" />
             </TabItem>
-            <TabItem Header="Tab Porudzbine">
+            <TabItem Header="Tab Porudžbine">
                 <local:PorudzbineView DataContext="{Binding PorudzbineViewModel}" />
             </TabItem>
         </TabControl>
