@@ -74,3 +74,4 @@ C:\Users\HP\Documents\GitHub\NutriFit\nutriFitApp\NutriFit\NutriFit\obj\Debug\Nu
 C:\Users\HP\Documents\GitHub\NutriFit\nutriFitApp\NutriFit\NutriFit\obj\Debug\NutriFit.csproj.CopyComplete
 C:\Users\HP\Documents\GitHub\NutriFit\nutriFitApp\NutriFit\NutriFit\obj\Debug\NutriFit.exe
 C:\Users\HP\Documents\GitHub\NutriFit\nutriFitApp\NutriFit\NutriFit\obj\Debug\NutriFit.pdb
+C:\Users\HP\Documents\GitHub\NutriFit\nutriFitApp\NutriFit\NutriFit\obj\Debug\NutriFit.csproj.SuggestedBindingRedirects.cache

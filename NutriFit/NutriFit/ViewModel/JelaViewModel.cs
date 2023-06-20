@@ -15,7 +15,7 @@ using System.Windows.Input;
 
 namespace NutriFit.ViewModel
 {
-    public class JelaViewModel
+    public class JelaViewModel:INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<Models.Jelo> Jela { get; set; }
@@ -34,6 +34,17 @@ namespace NutriFit.ViewModel
                 OnPropertyChanged(nameof(SelectedItem));
                 CancelSearch();
                 Search();
+            }
+        }
+        private double ukupnaCijenaPorudzbine;
+
+        public double UkupnaCijenaPorudzbine
+        {
+            get { return ukupnaCijenaPorudzbine; }
+            set
+            {
+                ukupnaCijenaPorudzbine = value;
+                OnPropertyChanged(nameof(UkupnaCijenaPorudzbine));
             }
         }
 
@@ -82,7 +93,7 @@ namespace NutriFit.ViewModel
             
             ComboBoxVrste = new ObservableCollection<string>() { "Doručak", "Potaž", "Kombinacija", "Pasta", "Rižoto", "Falafel", "Salata", "Pecivo", "Slatko","Sok"};
             JeloCRUD.Instance.GetAll().ToList().ForEach(item => Jela.Add(item));
-
+            UkupnaCijenaPorudzbine = 0;
             OpenNovoJeloWindowCommand = new RelayCommand(DodajJelo);
             OpenNoviSokWindowCommand = new RelayCommand(DodajSok);
             DodajKorpaCommand = new RelayCommand<object>(DodajUkorpu);
@@ -138,8 +149,8 @@ namespace NutriFit.ViewModel
                     Stavke.Values.ToList().ForEach(stavka => this.StavkeCollection.Add(stavka));
 
                 }
+                UkupnaCijenaPorudzbine += this.Stavke[item.Id].JedinicnaCijena;
             }
-
         }
 
         public void UvecajBrojStavke(object param)
@@ -148,6 +159,7 @@ namespace NutriFit.ViewModel
             {
                 this.Stavke[item.Id].Kolicina++;
                 this.Stavke[item.Id].UkupnaCijena = this.Stavke[item.Id].Kolicina * this.Stavke[item.Id].JedinicnaCijena;
+                UkupnaCijenaPorudzbine += this.Stavke[item.Id].JedinicnaCijena;
                 StavkeCollection.Clear();
                 Stavke.Values.ToList().ForEach(stavka => this.StavkeCollection.Add(stavka));
 
@@ -161,6 +173,7 @@ namespace NutriFit.ViewModel
                 this.Stavke[item.Id].Kolicina--;
                 this.Stavke[item.Id].UkupnaCijena = this.Stavke[item.Id].Kolicina * this.Stavke[item.Id].JedinicnaCijena;
 
+                UkupnaCijenaPorudzbine -= this.Stavke[item.Id].JedinicnaCijena;
                 if (this.Stavke[item.Id].Kolicina == 0)
                 {
                     this.Stavke.Remove(item.Id);
@@ -168,6 +181,7 @@ namespace NutriFit.ViewModel
 
                 StavkeCollection.Clear();
                 Stavke.Values.ToList().ForEach(stavka => this.StavkeCollection.Add(stavka));
+
             }
         }
 
@@ -195,6 +209,8 @@ namespace NutriFit.ViewModel
                 Stavke = stavke,
                 ukupnaCijena = ukupnaCijena
             };
+
+            UkupnaCijenaPorudzbine = 0;
             RacunCRUD.Instance.Create(racun); 
             DataChanged?.Invoke(this, EventArgs.Empty);
             Stavke.Clear();

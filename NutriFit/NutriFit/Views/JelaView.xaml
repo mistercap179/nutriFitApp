@@ -4,48 +4,93 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NutriFit.Views"
-             mc:Ignorable="d">
+             mc:Ignorable="d" Width="1920" Height="1080"
+             >
 
-    <Grid>
+    <Grid Background="#8cb494">
         <Grid>
-            <ComboBox ItemsSource="{Binding ComboBoxVrste}" SelectedItem="{Binding SelectedItem}"  HorizontalAlignment="Left" Height="33" Margin="26,80,0,0" VerticalAlignment="Top" Width="184" RenderTransformOrigin="1,0.731" />
-            <Button Content="Cancel"  Command="{Binding CancelCommand}" HorizontalAlignment="Left" Height="34" Margin="268,80,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="-0.471,0.824"/>
-            <ScrollViewer Margin="0,144,312,104">
-                <ItemsControl ItemsSource="{Binding Jela}" Height="492" Width="435" >
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="4" Padding="10" Margin="0 0 10 10">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Text="{Binding Naziv}" FontWeight="Bold" Grid.Row="0"/>
+            <ComboBox ItemsSource="{Binding ComboBoxVrste}" SelectedItem="{Binding SelectedItem}"  HorizontalAlignment="Left" Height="61" Margin="26,52,0,0" VerticalAlignment="Top" Width="251" RenderTransformOrigin="1,0.731" />
+            <Button Content="Cancel"  Command="{Binding CancelCommand}" HorizontalAlignment="Left" Height="62" Margin="291,52,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="-0.471,0.824">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#8f193d" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="Padding" Value="5" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="FontSize" Value="18" />
+                        <Setter Property="BorderThickness" Value="2" />
+                        <Setter Property="BorderBrush" Value="White" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="White" />
+                                <Setter Property="Foreground" Value="#8f193d" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Border BorderThickness="2" BorderBrush="#257434" CornerRadius="4" Margin="26,168,525,282">
+                <ScrollViewer VerticalScrollBarVisibility="Visible" >
+                    <ItemsControl ItemsSource="{Binding Jela}" VerticalAlignment="Top">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="4" Padding="10" Margin="0 0 10 10">
+                                    <Grid Height="160" Width="160">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Text="{Binding Naziv}" FontWeight="Bold" FontSize="15" Grid.Row="0" />
 
-                                    <Image Width="100" Height="40" Grid.Row="1">
-                                        <Image.Source>
-                                            <BitmapImage UriSource="{Binding Slika}" />
-                                        </Image.Source>
-                                    </Image>
-                                    <TextBlock Text="{Binding Cijena, StringFormat='Cijena: {0} KM'}" TextWrapping="Wrap" Grid.Row="2"/>
+                                        <Image Grid.Row="1" Grid.RowSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                            <Image.Source>
+                                                <BitmapImage UriSource="{Binding Slika}" />
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="{Binding Cijena, StringFormat='Cijena: {0} KM'}"
+                                                   TextWrapping="Wrap" Grid.Row="5" />
 
-                                    <Button Content="Dodaj u korpu" Command="{Binding DataContext.DodajKorpaCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                            CommandParameter="{Binding}" Grid.Row="3">
-                                    </Button>
+                                        <Button Content="Dodaj u korpu" Command="{Binding DataContext.DodajKorpaCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                CommandParameter="{Binding}" Grid.Row="6">
+                                            <Button.Style>
+                                                <Style TargetType="Button">
+                                                    <Setter Property="Background" Value="#8f193d" />
+                                                    <Setter Property="Foreground" Value="White" />
+                                                    <Setter Property="Padding" Value="2" />
+                                                    <Setter Property="FontWeight" Value="Bold" />
+                                                    <Setter Property="FontSize" Value="12" />
+                                                    <Setter Property="BorderThickness" Value="1" />
+                                                    <Setter Property="BorderBrush" Value="White" />
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="White" />
+                                                            <Setter Property="Foreground" Value="#8f193d" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
 
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </ScrollViewer>
+
+
+
         </Grid>
         <Grid>
             <Grid.Style>
@@ -58,48 +103,118 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Style>
-            <ScrollViewer Margin="516,140,4,108">
-                <ItemsControl ItemsSource="{Binding StavkeCollection}" Height="492" Width="183">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Vertical"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="4" Padding="10" Margin="0 0 10 10"
+            <Border BorderThickness="2" BorderBrush="#257434" CornerRadius="4" Margin="1456,162,52,288">
+
+                <ScrollViewer Margin="-2,8,1,8" BorderBrush="#8f193d" BorderThickness="2" VerticalScrollBarVisibility="Auto" RenderTransformOrigin="0.5,0.5">
+
+                    <ItemsControl ItemsSource="{Binding StavkeCollection}" Height="Auto" Width="378">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="4" Padding="10" Margin="0 0 10 10"
                     HorizontalAlignment="Stretch">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Text="{Binding Naziv}" FontWeight="Bold" Grid.Row="0"/>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Naziv" FontWeight="Bold" Grid.Row="0" Grid.Column="0"/>
+                                        <TextBlock Text="Količina" FontWeight="Bold" Grid.Row="0" Grid.Column="1"/>
+                                        <TextBlock Text="Šifra" FontWeight="Bold" Grid.Row="0" Grid.Column="2"/>
+                                        <TextBlock Text="Ukupna cijena" FontWeight="Bold" Grid.Row="0" Grid.Column="3"/>
+                                        <Button Content="-" Command="{Binding DataContext.ObrisiStavkuCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                            CommandParameter="{Binding}" Grid.Row="0" Grid.Column="4">
+                                        </Button>
+                                        <TextBlock Text="{Binding Naziv, StringFormat=' {0}'}" TextWrapping="Wrap" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
 
-                                    <TextBlock Text="{Binding Kolicina, StringFormat='Količina x{0}'}" TextWrapping="Wrap" Grid.Row="1" VerticalAlignment="Center" />
-                                    <TextBlock Text="{Binding SifraKasa,StringFormat='Šifra za kasu: {0}'}"  TextWrapping="Wrap" Grid.Row="2" VerticalAlignment="Center" />
-                                    <TextBlock Text="{Binding UkupnaCijena, StringFormat='Ukupna cijena: {0} KM'}" TextWrapping="Wrap" Grid.Row="3"/>
-                                    <Button Content="-" Command="{Binding DataContext.ObrisiStavkuCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                            CommandParameter="{Binding}" Grid.Row="4">
-                                    </Button>
-                                    <Button Content="+" Command="{Binding DataContext.PovecajBrojStavkiCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                            CommandParameter="{Binding}" Grid.Row="5">
-                                    </Button>
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                                        <TextBlock Text="{Binding Kolicina, StringFormat='x{0}'}" Grid.Column="1"  TextWrapping="Wrap" Grid.Row="1"  VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding SifraKasa,StringFormat=' {0}'}" Grid.Column="2"  TextWrapping="Wrap" Grid.Row="1" VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding UkupnaCijena, StringFormat=' {0} KM'}" Grid.Column="3"  TextWrapping="Wrap"  Grid.Row="1"/>
 
-            </ScrollViewer>
-            <Button Content="Naplati" Command="{Binding AddPorudzbinaCommand}" HorizontalAlignment="Left" Height="64" Margin="520,490,0,0" VerticalAlignment="Top" Width="200"/>
-          
+                                        <Button Content="+" Command="{Binding DataContext.PovecajBrojStavkiCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                            CommandParameter="{Binding}" Grid.Row="1" Grid.Column="4">
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                </ScrollViewer>
+            </Border>
+            <Border BorderThickness="2" BorderBrush="#257434" CornerRadius="4" Margin="1456,813,52,210">
+                <TextBox IsReadOnly="True" Background="#8cb494" Foreground="Black" FontSize="22" FontWeight="Bold" 
+                         Text="{ Binding UkupnaCijenaPorudzbine, UpdateSourceTrigger=PropertyChanged,  StringFormat='Ukupna cijena narudžbine: {0} KM'}" VerticalAlignment="Center" Height="57" />
+            </Border>
+            <Button Content="Naplati" Command="{Binding AddPorudzbinaCommand}" HorizontalAlignment="Left" Height="91" Margin="1456,875,0,0" VerticalAlignment="Top" Width="412">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#8f193d" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="Padding" Value="5" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="FontSize" Value="28" />
+                        <Setter Property="BorderThickness" Value="2" />
+                        <Setter Property="BorderBrush" Value="White" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="White" />
+                                <Setter Property="Foreground" Value="#8f193d" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
         </Grid>
-          <Button Content="Dodaj Sok"  Command="{Binding OpenNoviSokWindowCommand}" Margin="276,542,304,24"></Button>
-          <Button Content="Dodaj Jelo"  Command="{Binding OpenNovoJeloWindowCommand}" Margin="53,542,527,24"></Button>
+        <Button Content="Dodaj Sok"  Command="{Binding OpenNoviSokWindowCommand}" Margin="426,866,1191,119">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#8f193d" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="Padding" Value="5" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="FontSize" Value="18" />
+                    <Setter Property="BorderThickness" Value="2" />
+                    <Setter Property="BorderBrush" Value="White" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="White" />
+                            <Setter Property="Foreground" Value="#8f193d" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Content="Dodaj Jelo"  Command="{Binding OpenNovoJeloWindowCommand}" Margin="53,866,1583,119">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#8f193d" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="Padding" Value="5" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="FontSize" Value="18" />
+                    <Setter Property="BorderThickness" Value="2" />
+                    <Setter Property="BorderBrush" Value="White" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="White" />
+                            <Setter Property="Foreground" Value="#8f193d" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </UserControl>

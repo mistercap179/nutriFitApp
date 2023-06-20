@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using NutriFit.Database;
 using NutriFit.Database.CRUD;
 using NutriFit.Models;
+using NutriFit.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,7 +16,7 @@ using System.Windows.Input;
 
 namespace NutriFit.ViewModel
 {
-    public class NovoJeloViewModel
+    public class NovoJeloViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -154,6 +155,7 @@ namespace NutriFit.ViewModel
             if (openFileDialog.ShowDialog() == true)
             {
                 Slika = openFileDialog.FileName;
+                //NovoJeloView.putanja.Text = Slika
             }
         }
 

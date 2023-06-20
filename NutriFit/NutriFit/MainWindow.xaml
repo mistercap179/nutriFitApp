@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NutriFit.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="676" Width="800">
+        Title="MainWindow" Width="1920" Height="1080" WindowState="Maximized">
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="629" Margin="3,4,0,0" VerticalAlignment="Top" Width="789">
+        <TabControl HorizontalAlignment="Left" Height="1060" Margin="3,4,0,0" VerticalAlignment="Top" Width="1907">
             <TabItem Header="Tab Jela">
                 <local:JelaView DataContext="{Binding JelaViewModel}" />
             </TabItem>
