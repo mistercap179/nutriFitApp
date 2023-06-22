@@ -8,8 +8,43 @@
              >
 
     <Grid Background="#8cb494">
+        <TextBlock Foreground="#8f193d" FontSize="100" Text="NutriFit" Margin="1374,10,177,932">
+            
+        </TextBlock>
+        <Image Margin="1703,0,10,942"  >
+            <Image.Source>
+                <BitmapImage UriSource="C:\Users\HP\Documents\GitHub\NutriFit\nutriFitApp\NutriFit\NutriFit\bin\Release\logo.png" />
+            </Image.Source>
+        </Image>
         <Grid>
-            <ComboBox ItemsSource="{Binding ComboBoxVrste}" SelectedItem="{Binding SelectedItem}"  HorizontalAlignment="Left" Height="61" Margin="26,52,0,0" VerticalAlignment="Top" Width="251" RenderTransformOrigin="1,0.731" />
+            <ComboBox ItemsSource="{Binding ComboBoxVrste}" SelectedItem="{Binding SelectedItem}" Background="#8f193d" HorizontalAlignment="Left" Height="61" Margin="26,52,0,0" VerticalAlignment="Top" Width="251" RenderTransformOrigin="1,0.731">
+                <ComboBox.Style>
+                    <Style TargetType="ComboBox">
+                        
+                        <Setter Property="Padding" Value="5" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="FontSize" Value="18" />
+                        <Setter Property="BorderThickness" Value="2" />
+                        <Setter Property="BorderBrush" Value="White" />
+                        <Setter Property="MaxDropDownHeight" Value="200" />
+                        <Setter Property="Foreground" Value="#8f193d"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                        <!-- Set the text alignment to center -->
+
+                        <!-- Set the desired maximum height -->
+                      
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#8f193d" />
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ComboBox.Style>
+            </ComboBox>
+
+
             <Button Content="Cancel"  Command="{Binding CancelCommand}" HorizontalAlignment="Left" Height="62" Margin="291,52,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="-0.471,0.824">
                 <Button.Style>
                     <Style TargetType="Button">
@@ -20,6 +55,15 @@
                         <Setter Property="FontSize" Value="18" />
                         <Setter Property="BorderThickness" Value="2" />
                         <Setter Property="BorderBrush" Value="White" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="White" />
@@ -71,6 +115,15 @@
                                                     <Setter Property="FontSize" Value="12" />
                                                     <Setter Property="BorderThickness" Value="1" />
                                                     <Setter Property="BorderBrush" Value="White" />
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="Button">
+                                                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
                                                     <Style.Triggers>
                                                         <Trigger Property="IsMouseOver" Value="True">
                                                             <Setter Property="Background" Value="White" />
@@ -103,7 +156,7 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Style>
-            <Border BorderThickness="2" BorderBrush="#257434" CornerRadius="4" Margin="1456,162,52,288">
+            <Border BorderThickness="2" BorderBrush="#257434" CornerRadius="4" Margin="1456,169,52,288">
 
                 <ScrollViewer Margin="-2,8,1,8" BorderBrush="#8f193d" BorderThickness="2" VerticalScrollBarVisibility="Auto" RenderTransformOrigin="0.5,0.5">
 
@@ -123,27 +176,91 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition></ColumnDefinition>
-                                            <ColumnDefinition></ColumnDefinition>
-                                            <ColumnDefinition></ColumnDefinition>
-                                            <ColumnDefinition></ColumnDefinition>
-                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="10" ></ColumnDefinition>
+                                            <ColumnDefinition Width="60"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition  Width="Auto"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Text="Naziv" FontWeight="Bold" Grid.Row="0" Grid.Column="0"/>
-                                        <TextBlock Text="Količina" FontWeight="Bold" Grid.Row="0" Grid.Column="1"/>
-                                        <TextBlock Text="Šifra" FontWeight="Bold" Grid.Row="0" Grid.Column="2"/>
-                                        <TextBlock Text="Ukupna cijena" FontWeight="Bold" Grid.Row="0" Grid.Column="3"/>
-                                        <Button Content="-" Command="{Binding DataContext.ObrisiStavkuCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                            CommandParameter="{Binding}" Grid.Row="0" Grid.Column="4">
+                                        <TextBlock Text="Naziv" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                        <TextBlock Text="Količina" FontWeight="Bold" Grid.Row="0" Grid.Column="2" Width="100"/>
+                                        <TextBlock Text="Šifra" FontWeight="Bold" Grid.Row="0" Grid.Column="3"/>
+                                        <TextBlock Text="Ukupna cijena" FontWeight="Bold" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2"/>
+                                        <Button Height="20" Width="30" Command="{Binding DataContext.ObrisiStavkuCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                            CommandParameter="{Binding}" Grid.Row="0" Grid.Column="6">
+                                            <Button.Style>
+                                                <Style TargetType="Button">
+                                                    <Setter Property="Background" Value="Transparent" />
+                                                    <Setter Property="BorderBrush" Value="Transparent" />
+                                                    <Setter Property="Foreground" Value="Transparent" />
+                                                    <Setter Property="Cursor" Value="Hand" />
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="Button">
+                                                                <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="Transparent" />
+                                                            <Setter Property="BorderBrush" Value="Transparent" />
+                                                            <Setter Property="Foreground" Value="Transparent" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                            <Button.ContentTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="C:\Users\HP\Documents\GitHub\NutriFit\nutriFitApp\NutriFit\NutriFit\bin\Release\minus1.png" Width="20" Height="20" Margin="0,0,5,0" />
+
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </Button.ContentTemplate>
                                         </Button>
-                                        <TextBlock Text="{Binding Naziv, StringFormat=' {0}'}" TextWrapping="Wrap" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding Naziv}"  Grid.ColumnSpan="2" TextWrapping="Wrap" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
 
-                                        <TextBlock Text="{Binding Kolicina, StringFormat='x{0}'}" Grid.Column="1"  TextWrapping="Wrap" Grid.Row="1"  VerticalAlignment="Center" />
-                                        <TextBlock Text="{Binding SifraKasa,StringFormat=' {0}'}" Grid.Column="2"  TextWrapping="Wrap" Grid.Row="1" VerticalAlignment="Center" />
-                                        <TextBlock Text="{Binding UkupnaCijena, StringFormat=' {0} KM'}" Grid.Column="3"  TextWrapping="Wrap"  Grid.Row="1"/>
+                                        <TextBlock Text="{Binding Kolicina, StringFormat='x{0}'}" Grid.Column="2"  TextWrapping="Wrap" Grid.Row="1"  VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding SifraKasa}" Grid.Column="3"  TextWrapping="Wrap" Grid.Row="1" VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding UkupnaCijena, StringFormat=' {0} KM'}" Grid.Column="4" TextWrapping="Wrap"  Grid.ColumnSpan="2" VerticalAlignment="Center"  Grid.Row="1"/>
 
-                                        <Button Content="+" Command="{Binding DataContext.PovecajBrojStavkiCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                            CommandParameter="{Binding}" Grid.Row="1" Grid.Column="4">
+                                        <Button  Width="30"  Command="{Binding DataContext.PovecajBrojStavkiCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                            CommandParameter="{Binding}" Grid.Row="1" Grid.Column="6">
+                                            <Button.Style>
+                                                <Style TargetType="Button">
+                                                    <Setter Property="Background" Value="Transparent" />
+                                                    <Setter Property="BorderBrush" Value="Transparent" />
+                                                    <Setter Property="Foreground" Value="Transparent" />
+                                                    <Setter Property="Cursor" Value="Hand" />
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="Button">
+                                                                <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="Transparent" />
+                                                            <Setter Property="BorderBrush" Value="Transparent" />
+                                                            <Setter Property="Foreground" Value="Transparent" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                            <Button.ContentTemplate>
+                                                
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="C:\Users\HP\Documents\GitHub\NutriFit\nutriFitApp\NutriFit\NutriFit\bin\Release\plus.png" Width="20" Height="20" Margin="0,0,5,0" />
+                                                      
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </Button.ContentTemplate>
                                         </Button>
                                     </Grid>
                                 </Border>
@@ -167,6 +284,15 @@
                         <Setter Property="FontSize" Value="28" />
                         <Setter Property="BorderThickness" Value="2" />
                         <Setter Property="BorderBrush" Value="White" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="White" />
@@ -185,9 +311,18 @@
                     <Setter Property="Foreground" Value="White" />
                     <Setter Property="Padding" Value="5" />
                     <Setter Property="FontWeight" Value="Bold" />
-                    <Setter Property="FontSize" Value="18" />
+                    <Setter Property="FontSize" Value="28" />
                     <Setter Property="BorderThickness" Value="2" />
                     <Setter Property="BorderBrush" Value="White" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="White" />
@@ -204,8 +339,17 @@
                     <Setter Property="Foreground" Value="White" />
                     <Setter Property="Padding" Value="5" />
                     <Setter Property="FontWeight" Value="Bold" />
-                    <Setter Property="FontSize" Value="18" />
+                    <Setter Property="FontSize" Value="28" />
                     <Setter Property="BorderThickness" Value="2" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                     <Setter Property="BorderBrush" Value="White" />
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">

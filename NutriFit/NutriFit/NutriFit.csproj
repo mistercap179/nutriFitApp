@@ -165,9 +165,26 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="bin\Debug\pluss-removebg-preview.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\addbutton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bin\Release\pluss-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bin\Release\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bin\Release\minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bin\Release\minus1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bin\Release\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

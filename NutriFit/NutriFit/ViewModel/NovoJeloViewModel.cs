@@ -260,7 +260,7 @@ namespace NutriFit.ViewModel
             return isValid;
         }
 
-         public bool IsSokFormValid()
+        public bool IsSokFormValid()
         {
             bool isValid = true;
 

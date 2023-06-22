@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,5 +56,22 @@ namespace NutriFit.Views
             // Set the new height of the window
             this.Height = newHeight;
         }
+        private void NumericTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+
+           
+            TextBox textBox = (TextBox)sender;
+            string proposedText = textBox.Text + e.Text;
+
+            if (!Regex.IsMatch(proposedText, @"^\d+(\.\d+)?$"))
+            {
+                e.Handled = true; // Prevent the invalid input from being entered
+            }
+            
+        }
+
+        
+
+
     }
 }
